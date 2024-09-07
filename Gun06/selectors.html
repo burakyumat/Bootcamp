@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+
+    <style>
+        h1 {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        /* element */
+        .favori {
+            border-left: 10px solid #007AFF;
+        }
+
+        /* id */
+        #memleket {
+            text-align: center;
+        }
+      
+        /* after sözde elementi */
+        #memleket::after {
+            content: " (OTOPARK)";
+            font-weight: bold;
+        }
+            /* immediate child */
+        div>p {
+            margin: 0 60px;
+            text-align: justify;
+            font-size: 80%;
+        }
+            /* div içindeki tüm paragrafları etkiler */
+        div p {
+            font-family: "Comic Sans Ms";
+        }
+
+        h1,h2 {
+            background-color: black;
+            color: white;
+        }
+
+        /* attribte selector */
+        [title] {
+            background-color: yellowgreen;
+        }
+
+        li[title] {
+            font-style: italic;
+        }
+
+        h2+p {
+            text-indent: 40px;
+        }
+
+        /* odd ya da 2n+1, tek sayıları seçer. çift için even */
+        
+        li:nth-child(2n+1) {
+            background-color: gainsboro;
+        }
+            /* 6. çocuk */
+        li:nth-child(6) {
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            font-style: italic;
+            font-family: arial;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px red;
+            color: cyan;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 title="Başkenti Ankara'dır.">Türkiye</h1>
+    <h2 title="Bir Ege kentidir.">Kütahya</h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus doloribus molestias magnam placeat officia voluptas, quisquam tenetur commodi, quo similique repudiandae, perferendis deserunt! Nemo commodi a cumque animi sint magni.
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quis illo alias voluptas velit dolor, quam adipisci quisquam, accusamus iusto nobis dolorum veritatis id sed! Laudantium animi recusandae minus quibusdam?
+    </p>
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore sit commodi, ipsam voluptate at dolores cumque! Quasi, eos. Earum veritatis velit corporis inventore illum placeat natus quisquam deserunt aut omnis?
+        </p>
+        <section>
+            <p>Lorem, <span title="Rastgele bir kelimedir.">ipsum</span> dolor.</p>
+        </section>
+    </div>
+    <h3>İlçeleri</h3>
+    <ul>
+        <li>Merkez</li>
+        <li>Altıntaş</li>
+        <li>Aslanapa</li>
+        <li title="Dikkat! Antik kent içerir.">Çavdarhisar</li>
+        <li class="favori">Domaniç</li>
+        <li>Dumlupınar</li>
+        <li class="favori">Emet</li>
+        <li>Gediz</li>
+        <li>Hisarcık</li>
+        <li>Pazarlar</li>
+        <li>Simav</li>
+        <li>Şaphane</li>
+        <li id="memleket" class="favori">Tavşanlı</li>
+    </ul>
+    <ul>
+        <li>öğe 1</li>
+        <li>öğe 2</li>
+        <li>öğe 3</li>
+        <li>öğe 4</li>
+        <li>öğe 5</li>
+    </ul>
+</body>
+
+</html>
