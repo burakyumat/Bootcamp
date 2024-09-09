@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <style>
+        /* " * ", tüm elementlere geçerli olması için kullanılır. */
+        * {
+            box-sizing: border-box;
+        }
+/* .kutu1 deki .'nın sebebi class olması. header kendi element olduğu için başında nokta yok */
+        .kutu1 {
+            background-color: yellow;
+            border: 10px solid green;
+            padding: 20px;
+            height: 200px;  
+            width: 100%;
+            margin-top: 20px;
+            /* 200+20*2+10*2=260px toplam yükseklik */
+            /* toplam 200 olsun dersen box szing border box kullan. */
+            /* margin top ile margin bottom değerleri aynıysa 20+20=40 olmaz. 20 olur. Eşit değilse büyük olan değer kadar mesafe olur. */
+        }
+
+        header {
+            background-color: tan;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 20px;
+            /* p20 tab kısayolu */
+            border: 15px dashed darkslategray;
+            /* dashed ile kesik çizgi yapılır. */
+        }
+    </style>
+</head>
+<body>
+    <header>Öz Hakiki Header</header>
+    <div class="kutu1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus quod quasi nihil fugiat, beatae aliquid, eos voluptas saepe modi earum tempora, nesciunt cupiditate suscipit. Id quod quis illum error tempore?</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div elementlerine aşağıdaki özellikleri taşıyacak şekilde css verin:
+        1.  toplam yükseklik 200px
+        2.  toplam genişlik 200px
+        3.  arka plan rengi verin
+        4.  20px padding
+        5.  10px border
+        6.  15px margin
+        7.   yazı rengi beyaz
+         */
+         *  
+        
+        
+        div {
+            
+            box-sizing: border-box;
+            height: 200px;
+            width: 200px;
+            background-color: green;
+            padding: 20px;
+            border: 10px solid black;
+            margin: 15px;  
+            color: white;
+            float: left;
+            outline: 10px solid rgba(229, 229, 6, 0.542);
+            /* outline boxmodelde genişlik/yüksekliğe dahil değildir, margin gibi unsurları itmez. etrafını vurgular.*/
+            /* block elementleri yan yana dizmek için float left */
+            /* align-items: center;
+            justify-content: center;
+            display: flex;  ile tam ortaya alınır. konu bu değil şimdi.*/
+
+            /* div block element olduğu için sağını bloklar. elementler alt alta gelir. */
+         
+         }
+
+         main {
+            border: 10px solid red;
+            
+         }
+
+         
+    </style>
+</head>
+<body>
+    <!-- PROBLEM: main kutusunun kenarlığı içindeki her şeyi çevrelemesi gerekirken neden şu an çevrelemiyor? cevabı float konusunda. -->
+    <!-- div*10>{Kutu $} -->
+    <main>
+        <div>Kutu 1</div>
+        <div>Kutu 2</div>
+        <div>Kutu 3</div>
+        <div>Kutu 4</div>
+        <div>Kutu 5</div>
+        <div>Kutu 6</div>
+        <div>Kutu 7</div>
+        <div>Kutu 8</div>
+        <div>Kutu 9</div>
+        <div>Kutu 10</div>
+    </main>
+</body>
+</html>
