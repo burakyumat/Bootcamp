@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float Layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        header,
+        nav,
+        main>div,
+        footer {
+            background-color: gainsboro;
+            margin-bottom: 10px;
+            padding: 30px 10px;
+            /* //ilki sağ-sol, ikincisi üst-alt// */
+            text-align: center;
+        }
+
+        nav {
+            padding: 10px;
+        }
+
+        main>div {
+            float: left;
+            padding: 100px 10px;
+        }
+
+        main::after {
+            content: "";
+            display: block;
+            clear: both;
+            /* middle ile footer karışmıştı, onu temizledik */
+        }
+
+        .col1,
+        .col3 {
+            width: 15%;
+        }
+
+        .col2 {
+            width: calc(70% - 20px);
+            /* sağ sol 10 px margin verince tasarım bozulmuştu. %120 olduğu için. üste calc ekleyince kendisi hesapladı ve düzeltti. */
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        /* EKRAN MAX 500 PX İSE */
+        @media screen and (max-width: 500px) {
+            .col1, .col2, .col3 {
+                width: 100%;
+                margin: 0 0 10px 0;
+                /* sıralama üst, sağ, alt, sol */
+            }
+        }
+
+        /* YAZICIDAN ÇIKTI ALIRKEN DİKKAT EDİN:
+        Header YAZISI BÜYÜK HARF OLACAK */
+        @media print {
+            header {
+                text-transform: uppercase;
+            }
+            /* ÇIKTI ALIRKEN FOOTER GİZLE */
+            footer {
+                display: none;
+            }
+            
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>Header</header>
+    <nav>Navigation</nav>
+    <main>
+        <div class="col1">Left</div>
+        <div class="col2">Middle</div>
+        <div class="col3">Right</div>
+    </main>
+    <footer>Footer</footer>
+
+</body>
+
+</html>

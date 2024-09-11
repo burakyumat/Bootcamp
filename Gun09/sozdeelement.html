@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sözde Element</title>
+    <style>
+        body {
+            font-size: 24px;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        p::first-letter {
+            font-size: 3em;
+            /* 300% de kullanabiliriz */
+            float: left;
+            line-height: 0.75;
+            font-weight: bold;
+
+        }
+
+        p::first-line {
+            text-decoration: underline;
+        }
+
+        p::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 40px 20px;
+            background-color: #a9c9ff;
+            background-image: linear-gradient(180deg, #a9c9ff 0%, #ffbbec 100%);
+            padding: 36px;
+            border-radius: 10px;
+            box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- p*4>lorem -->
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id est cumque perspiciatis tenetur optio culpa, at
+            reprehenderit atque voluptates amet doloremque odit? Beatae totam saepe veniam, sapiente suscipit asperiores
+            nesciunt.</p>
+        <p>Praesentium aliquid dolorem quaerat soluta, distinctio placeat sint recusandae rerum deleniti. Odio iste ex
+            obcaecati neque, nesciunt aperiam molestiae inventore, eius, iure officia nihil excepturi praesentium esse
+            fuga assumenda dicta!</p>
+        <p>Ipsam dolor incidunt, nobis illum dolorem molestias ut voluptatem magnam quos enim vel aliquam tempora ad
+            excepturi nemo quasi facere cum sint quae delectus? Officiis repudiandae facilis numquam provident eligendi.
+        </p>
+        <p>Quos sint ab quia temporibus minus nostrum deleniti molestiae inventore! Error laudantium libero itaque
+            ullam, optio hic nisi? Cupiditate mollitia accusamus voluptate accusantium odit tempore maiores sit minima
+            quae alias!</p>
+</body>
+</main>
+
+</html>
