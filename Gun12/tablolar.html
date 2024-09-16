@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="bas">
+
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +12,7 @@
     <style>
         html {
             scroll-behavior: smooth;
+            
         }
 
         body {
@@ -68,23 +70,29 @@
         }
 
         .basa-git {
-            text-align: center;
             position: fixed;
             bottom: 16px;
             right: 20px;
-            background-color: black;
+            display: none;
         }
         .basa-git>a {
+            background-color: black;
             display: block;
             padding: 16px 20px;
             color: white;
             text-decoration: none;
+            
         }
+
+        .altta .basa-git {
+            display: block;
+        }
+
     </style>
 </head>
 
 <body>
-    <h1 id="bas">Top 100 Movies</h1>
+    <h1>Top 100 Movies</h1>
 
     <table>
         <thead>
@@ -1102,8 +1110,17 @@
 
     <div class="basa-git">
         <a href="#bas">Başa Git</a>
+        
 
     </div>
+    <script>
+        // pencere aşağı scroll yapınca body elementine
+        // "altta", scroll yoksa "ustte" sınıfını ver
+        window.onscroll = function() {
+          document.body.className = 
+            window.scrollY > 0 ? "altta" : "ustte";
+        };
+    </script>
 
 </body>
 
