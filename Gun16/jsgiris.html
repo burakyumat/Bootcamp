@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JavaScript Öğreniyorum</h1>
+    <p>
+        <!-- Buranın içini js ile değiştirebilir miyiz? -->
+    </p>
+
+    <script>
+        // Burası js bölgesi 
+
+        //JS'DE html dokümanına karşılık gelen 
+        //document adında bir nesne vardır.
+        //(cizim yaparken her şeyin başı olarak DOM ağacının tepesinde gösterdik)
+        //document nesnesi üzerinden mevcut sayfadaki dokümanın
+        //düm elementlerine erişebiliriz.
+
+        //sayfadaki ilk p elementine eriş ve içindeki metni değiştir
+        // nesneleri değişkenlerde taşıyabilirsiniz
+        let ilkParag =  document.querySelector("p");
+        // document.querySelector("p") komutu bundan sonra ilkParag olsun demek
+        
+        
+        // nesnelerin özelliklerine . operatörü ile erişirirz
+        // = operatörü ile yeni değerler veririrz
+        ilkParag.textContent = "Biz kimseyi yarı yolda bırakmadık; onlar müsait bir yerde indiler...";
+       
+        // elementlerin özelliklerinin özelliklerine erişip değiştirebiliriz
+        ilkParag.style.color = "purple";
+        
+        // DOM ağacının ilk dallarından biri olan body'e bu şekilde erişebiliriz 
+        document.body.style.background = "linear-gradient(to right,orange, white)"
+        
+        //  PROGRAMLAMA:
+        //KOMUTLARIN BELLİ SIRADA BELİRLİ BİR AMAÇ İÇİN ÇALIŞTIRILMASI
+        // KOMUTLAR İNSAN DİLİNİ YAKIN BİR DİLLE 
+        //BİLGİSAYARA İŞ YAPMASI İÇİN FISILDAMAKTIR
+
+    //    alert("Hop!");
+    //    alert("Hoş geldin!");
+    </script>
+</body>
+
+</html>

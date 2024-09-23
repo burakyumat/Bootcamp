@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript bölgeleri</title>
+</head>
+
+<body>
+    <h1><span lang="en">JavaScript</span> Giriş II</h1>
+    <p>Bir HTML dokümanında JS'i 3 farklı şekilde dokumana dahil edebilriiz.</p>
+
+
+    <!-- SCRIPT TAG'LERI ARASINDA -->
+    <script>
+        let x = 2 + 2;
+        document.write("<hr>");
+        document.write(x);
+    </script>
+
+
+
+    <!-- B. HARICI DOSYA -->
+    <script src="kod.js"></script>
+    <hr>
+    <!-- INLINE JS -->
+    <button onclick="alert('BAŞIN GÖĞE ERDİ Mİ?')">BANA TIKLAMA</button>
+
+
+    <hr>
+    <button id="garfield" onmouseenter="document.getElementById('garfield').textContent = 'ŞAKA YAPTIM'">
+        ÜZERİME GELMEYİN, BURAYI TERK EDERİM!
+    </button>
+
+
+
+
+</body>
+
+</html>
