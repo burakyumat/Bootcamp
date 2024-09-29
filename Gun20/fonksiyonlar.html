@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonsiyonlar</title>
+</head>
+
+<body>
+
+    <script src="../ortak/yaz.js"></script>
+    <script>
+
+        /*
+        DÖRT ÇEŞİT FONSKİYONU ÖRNEKLEYELİM
+        1. PARAMETRE ALMAYAN VE DEĞER DÖNDÜRMEYEN
+        2. PARAMETRE ALMAYAN VE DEĞER DÖNDÜREN
+        3. PARAMETRE ALMAYAN VE DEĞER DÖNDÜRMEYEN
+        4. PARAMETRE ALAN VE DEĞER DÖNDÜREN
+        */
+
+       //parametre alan ve değer döndüren
+       //aldığı sayının bir fazlasını döndürür
+       //matematikteki f(x)=x+1
+       function birFazlasi(x) {
+           return x + 1;
+
+       }
+
+       let sayi = 3;
+       sayi = birFazlasi(sayi);
+       ciz(sayi) // 4
+
+        //parametre alan, değer döndürmeyen, 
+        //işçi fonksiyon:
+        //aldığı renk koduyla arka planı boyar.
+        function arkaPlaniBoya(renk) {
+            document.body.style.background = renk;
+        }
+
+        arkaPlaniBoya("linear-gradient(to right, green, blue)")
+
+        // parametre almayan ve değer döndüren
+        function ayinGunu() {
+            let suAn = new Date();
+            return suAn.getDate();
+        }
+
+        let kacinci = ayinGunu();
+        ciz("Bugün ayın " + kacinci  + ". günüdür.")
+
+        //parametre almayan, değer döndürmeyen
+        function ekranaTarihiVeSaatiYazdir() {
+            let suAn =new Date();
+            ciz (suAn.toLocaleString());
+        }
+        
+        ekranaTarihiVeSaatiYazdir();
+
+    </script>
+</body>
+
+</html>
