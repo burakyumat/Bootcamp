@@ -1,0 +1,52 @@
+<!-- ÖDEV 2:
+Bir kare yapın. Bu kareye tıklayınca sayfa üzerinde rastgele bir yere
+gitsin. (ipuçları: css'teki mutlak pozisyonlamadan yararlanılabilir.)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kare</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .square {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="square"></div>
+
+<script>
+    const square = document.querySelector('.square');
+
+    square.addEventListener('click', () => {
+        // Sayfa genişliği ve yüksekliğini al
+        const pageWidth = window.innerWidth;
+        const pageHeight = window.innerHeight;
+
+        // Rastgele x ve y koordinatları hesapla
+        const randomX = Math.random() * (pageWidth - square.offsetWidth);
+        const randomY = Math.random() * (pageHeight - square.offsetHeight);
+
+        // Kutuya bu koordinatları uygula
+        square.style.left = `${randomX}px`;
+        square.style.top = `${randomY}px`;
+    });
+</script>
+
+</body>
+</html>

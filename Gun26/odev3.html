@@ -1,0 +1,48 @@
+<!-- GÖREV 3: Bir metin kutusu koyun. Kullanıcı oraya renk kodu girince
+ sayfanın arkaplan rengi o renk olsun. Örnek inputlar:
+ red, orange, #fafafa, #e3c, rgb(253, 33, 128), vs.. -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arka Plan Renk Değiştirici</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            width: 60%; /* Ekranın %80'ine kadar genişler */
+            max-width: 500px; /* Maksimum genişlik 500px olacak */
+            min-width: 250px; /* Minimum genişlik 250px olacak */
+        }
+    </style>
+</head>
+<body>
+
+<input type="text" id="colorInput" placeholder="Bir renk kodu girin. Örnek: red, #fafafa, rgb(255, 33, 28)" />
+
+<script>
+    const colorInput = document.getElementById('colorInput');
+
+    colorInput.addEventListener('input', () => {
+        // Kullanıcının girdiği renk kodunu al
+        const color = colorInput.value;
+        
+        // Sayfanın arka plan rengini güncelle
+        document.body.style.backgroundColor = color;
+    });
+</script>
+
+</body>
+</html>
