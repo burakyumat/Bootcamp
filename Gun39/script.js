@@ -4,14 +4,16 @@ const treeImage = new Image();
 treeImage.src = "tree.png";
 const dinoImage = new Image();
 dinoImage.src = "dino.png";
+let skorMarjin = 10;
 let basladi = false;
+let basladiZaman;
 
 // ağaçların uzaklıkları (x koordinatında)
 let trees = [];
 
 // dinoX dinoY dinoWidth dinoHeight
 let dw = 29, dh = 32;
-let dx = 0, dy = canvas.height / 2 - dh;
+let dx = 50, dy = canvas.height / 2 - dh;
 let mjh = dh * 2; // maximum jump height
 let jh = 0; // yerde oturuyor
 let js = 2; // jump speed (atlama hızı katsayısı)
@@ -21,17 +23,18 @@ let ty = canvas.height / 2 - th;
 
 // jump direction (zıplama yönü)
 // 0: duruyor  +1: yukarı  -1: aşağı
-let jd = 0; 
+let jd = 0;
 
 
 function ciz() {
-    
+
     cizimiTemizle();
     zeminCiz();
     ziplamayiYonet();
     dinoCiz();
     agaclariCiz();
     sahneyiKaydir();
+    skoruCiz();
     let carpti = carptiMi();
     if (carpti) {
         oyunuBitir();
@@ -41,11 +44,40 @@ function ciz() {
     requestAnimationFrame(ciz);
 }
 
+function skoruCiz() {
+    let simdi = new Date();
+    let gecenSure = simdi - basladiZaman;
+    let skor = Math.floor(gecenSure / 1000);
+    let skorMetin = skorBicimle(skor);
+    ctx.font = '24px Tiny5, sans-serif';
+    ctx.fillStyle = "black";
+    let metinBoyut = ctx.measureText(skorMetin);
+    let metinGen = metinBoyut.width;
+    let metinYuk = metinBoyut.actualBoundingBoxAscent
+        + metinBoyut.actualBoundingBoxDescent;
+    ctx.fillText(skorMetin, canvas.width - metinGen - skorMarjin, metinYuk + skorMarjin);
+}
+
+function skorBicimle(sayi) {
+    let uz = sayi.toString().length;
+    if (uz >= 5) return sayi;
+    return "0".repeat(5 - uz) + sayi;
+}
+
 function oyunuBitir() {
     let txt = "GAME OVER!";
-    ctx.font = '24px Tiny5, sans-serif';
+    basladi = false;
+    ctx.font = '28px Tiny5, sans-serif';
     const textWidth = ctx.measureText(txt).width;
+    ctx.fillStyle = "black";
     ctx.fillText(txt, (canvas.width - textWidth) / 2, canvas.height / 4);
+
+    let txt2 = ">>> Click to play again! <<<"
+    ctx.font = '16px Tiny5, sans-serif';
+    ctx.fillStyle = "red";
+    const textWidth2 = ctx.measureText(txt2).width;
+    ctx.fillText(txt2, (canvas.width - textWidth2) / 2, canvas.height / 4 * 3);
+
 }
 
 function carptiMi() {
@@ -87,18 +119,19 @@ function agaclariCiz() {
     // sadece canvas'ın içine denk gelen ağaçları çiz
     const cizilecekler = trees.filter(x => x > -tw && x < canvas.width);
 
-    for (const x of cizilecekler) 
+    for (const x of cizilecekler)
         agacCiz(x);
 }
 
 function loadTrees() {
     // ilk ağaç canvas bitiminde
+    trees = []; //yeniden basladığında eski ağaçları sil
     trees.push(canvas.width);
 
     for (let i = 0; i < 1000; i++) {
         let otesi = rastgele(Math.floor(canvas.width / 3), canvas.width);
         let sonAgacUzakligi = trees[trees.length - 1];
-        let yeniAgacUzakligi =  sonAgacUzakligi + otesi;
+        let yeniAgacUzakligi = sonAgacUzakligi + otesi;
         trees.push(yeniAgacUzakligi);
     }
 }
@@ -111,7 +144,7 @@ function ziplamayiYonet() {
     if (jd == 0) return;
 
     // dino max yüksekliğin 5te 4ünün üstündeyse yavaş ilerlet
-    if (jh < mjh * .8) 
+    if (jh < mjh * .8)
         jh += jd * js; // yerden yüksekliğini arttır/azalt
     else
         jh += jd * sjs; // yerden yüksekliğini YAVAŞÇA arttır/azalt
@@ -132,9 +165,17 @@ function cizimiTemizle() {
 }
 
 function baslat() {
+    jd = 0; //zıplıyorsa dikey hareket yönünü sıfırla
+    jh = 0; //zıplıyorsa durdur
     basladi = true;
+    basladiZaman = new Date();
     loadTrees();
     requestAnimationFrame(ciz);
+}
+
+function yenidenBaslat() {
+    //yeniden baslatırken yapacağınız ekstra işlemleri burada yapabilirsiniz.
+    baslat();
 }
 
 function agacCiz(x) {
@@ -160,8 +201,8 @@ function mesafe(n1, n2) {
 
 function kesisir(d1, d2) {
     // orta noktaları arasındaki mesafe yarı çapları toplamından küçükse
-    const o1 = { x: (d1.a.x + d1.b.x) / 2, y: (d1.a.y + d1.b.y) / 2};
-    const o2 = { x: (d2.a.x + d2.b.x) / 2, y: (d2.a.y + d2.b.y) / 2};
+    const o1 = { x: (d1.a.x + d1.b.x) / 2, y: (d1.a.y + d1.b.y) / 2 };
+    const o2 = { x: (d2.a.x + d2.b.x) / 2, y: (d2.a.y + d2.b.y) / 2 };
     const mes = mesafe(o1, o2);
     const r1 = (dw + dh) / 4.8; // yük + gen / 4 => yaklaşık yarıçap
     const r2 = (tw + th) / 4.8; // yük + gen / 4 => yaklaşık yarıçap
@@ -185,13 +226,20 @@ function kesisir(d1, d2) {
 // }
 
 // EVENTS
-dinoImage.onload = function() {
+dinoImage.onload = function () {
     baslat();
 };
 
-canvas.onclick = jump;
+canvas.onclick = function (event) {
+    if (basladi) {
+        jump();
+    }
+    else {
+        yenidenBaslat();
+    }
+}
 
-window.onkeydown = function(event) {
+window.onkeydown = function (event) {
     if (event.keyCode == 38)
         jump();
 };
